@@ -6,17 +6,19 @@ Traveller.prototype.getJourneyStartLocations = function() {
   let start = this.journeys.map((journeys) => {return journeys.startLocation})
   return start;
 };
-
+// we start with let and the variable name, assign the this.attribute to refer to the Constructor
 Traveller.prototype.getJourneyEndLocations = function () {
-
+  let end = this.journeys.map((journeys) => {return journeys.endLocation})
+  return end;
 };
 
 Traveller.prototype.getJourneysByTransport = function (transport) {
-
+  let ride = this.journeys.filter((journeys) => {return journeys.transport == transport})
+  return ride;
 };
 
 Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
-
+  let minDistance = this.journeys.reduce
 };
 
 Traveller.prototype.calculateTotalDistanceTravelled = function () {
