@@ -3,17 +3,17 @@ const Traveller = function(journeys) {
 };
 
 Traveller.prototype.getJourneyStartLocations = function() {
-  let start = this.journeys.map((journeys) => {return journeys.startLocation})
+  let start = this.journeys.map((journey) => {return journey.startLocation})
   return start;
 };
-// we start with let and the variable name, assign the this.attribute to refer to the Constructor
+
 Traveller.prototype.getJourneyEndLocations = function () {
-  let end = this.journeys.map((journeys) => {return journeys.endLocation})
+  let end = this.journeys.map((journey) => {return journey.endLocation})
   return end;
 };
 
 Traveller.prototype.getJourneysByTransport = function (transport) {
-  let ride = this.journeys.filter((journeys) => {return journeys.transport == transport})
+  let ride = this.journeys.filter((journey) => {return journey.transport == transport})
   return ride;
 };
 
@@ -23,13 +23,25 @@ Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
 });
 };
 
-Traveller.prototype.calculateTotalDistanceTravelled = function () {  
+Traveller.prototype.calculateTotalDistanceTravelled = function() { 
+  return this.journeys.reduce((total, journeys) =>{
+  return total += journeys.distance
+  },0);
 
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
+  let transportMethods = []
 
+  let newArray = this.journeys.map(journey => {
+    transportMethods.push(journey.transport)
+    return transportMethods
+  });
+
+  uniqueString = [...new Set(newArray)];
+  return uniqueString
 };
 
+// code to write the last function found here, but does not Workerhttps://www.codegrepper.com/code-examples/javascript/get+unique+strings+from+array+javascript
 
 module.exports = Traveller;
