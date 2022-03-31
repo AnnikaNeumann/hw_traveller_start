@@ -31,17 +31,32 @@ Traveller.prototype.calculateTotalDistanceTravelled = function() {
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
-  let transportMethods = []
+  return this.journeys.map((journey) => {
+    return journey.transport;
+  })
+  
+    .filter((transport, index, array) =>{
+      return array.indexOf(transport) === index;
+  
+    });
+  };
 
-  let newArray = this.journeys.map(journey => {
-    transportMethods.push(journey.transport)
-    return transportMethods
-  });
 
-  uniqueString = [...new Set(newArray)];
-  return uniqueString
-};
 
-// code to write the last function found here, but does not Workerhttps://www.codegrepper.com/code-examples/javascript/get+unique+strings+from+array+javascript
+//   let transportMethods = []
+
+//   let newArray = this.journeys.map(journey => {
+//     transportMethods.push(journey.transport)
+//     return transportMethods
+//   });
+
+//   uniqueString = [...new Set(newArray.getUniqueModesOfTransport)];
+//   return uniqueString.getUniqueModesOfTransport
+// };
+
+
+
+// code to write the last function found here, but does not Work 
+https://www.codegrepper.com/code-examples/javascript/get+unique+strings+from+array+javascript
 
 module.exports = Traveller;
